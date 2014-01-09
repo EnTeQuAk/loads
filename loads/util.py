@@ -104,14 +104,7 @@ def dns_resolve(url):
     original = netloc[0]
     addrs = _DNS_CACHE.get(original)
     if addrs is None:
-        try:
-            addrs = gevent_socket.gethostbyname_ex(original)[2]
-        except AttributeError:
-            # gethostbyname_ex was introduced by gevent 1.0,
-            # fallback on gethostbyname instead.
-            logger.info('gevent.socket.gethostbyname_ex is not present, '
-                        'Falling-back on gevent.socket.gethostbyname')
-            addrs = [gevent_socket.gethostbyname(original)]
+        addrs = gevent_socket.gethostbyname_ex(original)[2]
         _DNS_CACHE[original] = addrs
 
     resolved = random.choice(addrs)
