@@ -11,7 +11,7 @@ def send_message(room, message, notify, color='yellow'):
     values = {
         'auth_token': token,
         'room_id': room,
-        'from': 'Loadzilla',
+        'from': 'Loads',
         'message': message,
         'notify': int(notify),
         'color': color,
@@ -28,7 +28,6 @@ def send_message(room, message, notify, color='yellow'):
     if response_data['status'] != 'sent':
         logger = logging.getLogger(__name__)
         logger.error('Event was not sent to hipchat')
-
 
 
 if __name__ == '__main__':
