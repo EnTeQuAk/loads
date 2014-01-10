@@ -3,6 +3,7 @@ import loads
 import os
 import urllib
 import urllib2
+import json
 
 
 def send_message(room, message, notify, color='yellow'):
